@@ -4,7 +4,7 @@ Definition composer M A := forall x, composes x M (A $ x).
 
 Theorem sage_bird :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall M,
       mockingbird M ->
       forall A,

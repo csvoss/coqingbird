@@ -7,7 +7,7 @@ Notation "A $ B" := (Call A B) (at level 50).
 
 Definition composes A B C : Prop :=
   forall x, C $ x = A $ (B $ x).
-Definition is_composer compose := forall A B, composes A B (compose A B).
+Definition is_compose compose := forall A B, composes A B (compose A B).
 
 Definition mockingbird M : Prop :=
   forall x, M $ x = x $ x.
@@ -16,7 +16,7 @@ Definition fond A B : Prop := A $ B = B.
 
 Theorem Problem_1 :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall M,
       mockingbird M ->
       forall A, exists B, fond A B.
@@ -31,7 +31,7 @@ Definition egocentric x : Prop := x $ x = x.
 
 Theorem Problem_2 : 
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall M,
       mockingbird M ->
       exists e, egocentric e.
@@ -47,7 +47,7 @@ Definition agreeable A : Prop := forall B, exists x, agree A B x.
 
 Theorem Problem_3 :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall A,
       agreeable A ->
       forall B, exists C, fond B C.
@@ -60,7 +60,7 @@ Qed.
 
 Theorem Problem_4 :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall A B C,
       composes A B C ->
       agreeable C ->
@@ -75,7 +75,7 @@ Qed.
   
 Theorem Problem_5 :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall A B C,
     exists D,
       forall x,
@@ -90,7 +90,7 @@ Definition compatible A B : Prop := exists x y, A $ x = y /\ B $ y = x.
 
 Theorem Problem_6 :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall M,
       mockingbird M ->
       forall A B, compatible A B.
@@ -115,7 +115,7 @@ Definition normal A := exists B, fond A B.
 
 Theorem Problem_8 :
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall Ha,
       happy Ha ->
       exists N, normal N.
@@ -137,7 +137,7 @@ Definition kestrel K := forall x, fixated (K $ x) x.
 
 Theorem Problem_9 : 
   forall compose,
-    is_composer compose ->
+    is_compose compose ->
     forall M,
       mockingbird M ->
       forall K,
